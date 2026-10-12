@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guía visual e interactiva para comprender la incertidumbre de medición, la media aritmética y las incertidumbres de una y varias mediciones.">
+  <title>Incertidumbre · Medir también es estimar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress-bar" aria-hidden="true"><span id="readingProgress"></span></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Incertidumbre, inicio">
+        <span class="brand-mark">σ</span>
+        <span><strong>Incertidumbre</strong><small>Medir también es estimar</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Navegación principal">
+        <button type="button" class="topic-nav-button active" data-topic-select="single" aria-pressed="true">Una medición</button>
+        <button type="button" class="topic-nav-button" data-topic-select="repeated" aria-pressed="false">Mediciones repetidas</button>
+      </nav>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar apariencia" title="Cambiar apariencia">☼</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Guía de laboratorio · Nivel progresivo</p>
+        <h1>Una medida no es una certeza.<br><em>Es una estimación con contexto.</em></h1>
+        <p class="hero-lead">Aprende a describir qué tan confiable es una medición, cuándo usar una sola lectura y cómo reducir la duda repitiendo el experimento.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#mapa">Empezar el recorrido <span>↗</span></a>
+          <a class="text-link" href="#practica">Ir directo a ejercicios <span>↓</span></a>
+        </div>
+        <div class="hero-note"><span>↳</span><span>Idea guía: toda medición comunica un valor <strong>y</strong> cuánto podemos confiar en él.</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Ilustración de una medición en una escala">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="measurement-card">
+          <div class="card-top"><span>LECTURA DE EJEMPLO</span><span class="status-dot">● estable</span></div>
+          <div class="measure-number">12.40 <small>cm</small></div>
+          <div class="measure-line"><span>11.90</span><i></i><span>12.90</span></div>
+          <div class="uncertainty-range"><span class="range-line"></span><b>± 0.05 cm</b></div>
+          <div class="card-footer"><span>valor medido</span><span>intervalo razonable</span></div>
+        </div>
+        <div class="floating-chip chip-top"><span class="chip-icon">≈</span><span><strong>Estimación</strong><small>no adivinanza</small></span></div>
+        <div class="floating-chip chip-bottom"><span class="chip-icon accent">✓</span><span><strong>Repetir ayuda</strong><small>reduce el azar</small></span></div>
+      </div>
+    </section>
+
+    <section class="definition-strip">
+      <div class="section-shell definition-grid">
+        <div class="section-kicker">01 / Antes de calcular</div>
+        <div>
+          <h2>¿Qué significa incertidumbre?</h2>
+          <p>Es un parámetro que expresa la <strong>duda asociada</strong> al resultado de una medición. No es un error ni significa que “todo esté mal”: indica el intervalo en el que razonablemente puede encontrarse el valor verdadero.</p>
+        </div>
+        <div class="quote-box"><span>“</span><p>Medir es comparar con una referencia; informar es reconocer sus límites.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell learning-map" id="mapa">
+      <div class="section-heading">
+        <div><p class="eyebrow">Elige tu tema</p><h2>Dos casos, dos caminos</h2></div>
+        <p class="heading-aside">Pulsa una opción para estudiar ese tema. El contenido cambia en esta misma página y en la misma pestaña del navegador.</p>
+      </div>
+      <div class="map-grid topic-picker">
+        <button class="map-card map-card-active" type="button" data-topic-select="single" aria-pressed="true"><span class="map-number">TEMA 01</span><span class="map-icon">📏</span><h3>Una medición</h3><p>Una lectura, resolución del instrumento y su incerteza.</p><span class="map-arrow">→</span></button>
+        <button class="map-card" type="button" data-topic-select="repeated" aria-pressed="false"><span class="map-number">TEMA 02</span><span class="map-icon">📊</span><h3>La misma medida varias veces</h3><p>Media x̄, desviación estándar σ e incerteza σ/√n.</p><span class="map-arrow">→</span></button>
+      </div>
+      <div class="selected-topic" id="selectedTopic" aria-live="polite"><span class="selected-topic-mark">01</span><div><strong>Estás en: una medición</strong><p>Aprenderás a leer una sola vez, considerar la escala del instrumento y expresar el resultado con su incerteza.</p></div></div>
+    </section>
+
+    <section class="section-shell concepts-section topic-section" data-topic="single" id="conceptos">
+      <div class="two-column-intro">
+        <div><p class="eyebrow">Estación 01 · El lenguaje</p><h2>Primero: separar las piezas</h2></div>
+        <p>Una medición completa nunca es solo un número. Para que otra persona pueda interpretarla, necesita al menos un valor, una unidad y una indicación de su incertidumbre.</p>
+      </div>
+      <div class="concept-grid">
+        <article class="concept-card"><div class="concept-symbol">x</div><div><h3>Valor medido</h3><p>La mejor estimación de la magnitud observada. Puede ser una lectura individual o la media de varias.</p><code>x = 12.40 cm</code></div></article>
+        <article class="concept-card"><div class="concept-symbol">u</div><div><h3>Incertidumbre</h3><p>La duda cuantificada alrededor de la estimación. Se expresa con la <strong>misma unidad</strong> que el valor.</p><code>u = 0.05 cm</code></div></article>
+        <article class="concept-card"><div class="concept-symbol">%</div><div><h3>Incertidumbre relativa</h3><p>Compara la incertidumbre con el tamaño del valor. Es útil para comparar mediciones distintas.</p><code>u<sub>r</sub> = u / x</code></div></article>
+      </div>
+      <div class="callout callout-blue"><span class="callout-icon">i</span><div><strong>Cómo se escribe un resultado</strong><p>La forma estándar es <span class="formula-inline">x = (12.40 ± 0.05) cm</span>. El símbolo ± se lee “más o menos”: sugiere un intervalo de 12.35 cm a 12.45 cm.</p></div></div>
+    </section>
+
+    <section class="dark-section topic-section" data-topic="single" id="unitaria">
+      <div class="section-shell">
+        <div class="two-column-intro dark-intro"><div><p class="eyebrow light">Estación 02 · Una sola lectura</p><h2>Incertidumbre unitaria</h2></div><p>Cuando solo tienes una medición, la incertidumbre se estima a partir de las características del instrumento y del modo de lectura.</p></div>
+        <div class="unitary-layout">
+          <div class="unitary-explanation">
+            <div class="step-line"><span>01</span><div><h3>Busca la resolución</h3><p>La resolución es la menor división o el último dígito que el instrumento puede mostrar. En una regla con milímetros, la resolución es 1 mm.</p></div></div>
+            <div class="step-line"><span>02</span><div><h3>Estima la mitad de la división</h3><p>Una regla habitual permite leer aproximadamente hasta la mitad de su división mínima:</p><div class="formula-box">u<sub>instrumento</sub> ≈ <span>resolución</span><hr>2</div></div></div>
+            <div class="step-line"><span>03</span><div><h3>Informa con la misma unidad</h3><p>Si la regla tiene división de 1 mm, puedes reportar una longitud como:</p><div class="result-pill">L = (15.6 ± 0.5) mm</div></div></div>
+          </div>
+          <div class="instrument-panel">
+            <div class="panel-label">VISUALIZA LA LECTURA</div>
+            <div class="ruler"><div class="ruler-labels"><span>15 mm</span><span>16 mm</span><span>17 mm</span></div><div class="ruler-line"><i></i><i></i><i class="major"></i><i></i><i></i><b class="marker"></b></div><div class="ruler-caption"><span>división mínima = 1 mm</span><span>lectura ≈ 15.6 mm</span></div></div>
+            <div class="mini-result"><span>Incertidumbre estimada</span><strong>± 0.5 mm</strong></div>
+          </div>
+        </div>
+        <div class="single-examples"><div class="single-example-head"><span>Ejemplos de medición única</span><small>La incertidumbre depende de la resolución del instrumento.</small></div><div class="single-example-grid"><article><span class="example-icon">📐</span><h3>Longitud</h3><p>Regla con división de 1 mm. Longitud leída: 54.0 mm.</p><strong>Resultado: 54.0 mm ± 0.5 mm</strong></article><article><span class="example-icon">⏱</span><h3>Tiempo</h3><p>Un cronómetro muestra una sola lectura para una oscilación.</p><strong>Resultado: 10.32 s ± 0.01 s</strong></article><article><span class="example-icon">🌡</span><h3>Temperatura</h3><p>Termómetro clínico con resolución de 0.1 °C.</p><strong>Resultado: 37.5 °C ± 0.1 °C</strong></article></div></div>
+        <div class="dark-note"><strong>Importante:</strong> la regla de “mitad de la división” es una aproximación didáctica. En un laboratorio real también pueden influir la calibración, el cero, el paralaje y el método de lectura.</div>
+      </div>
+    </section>
+
+    <section class="section-shell repeated-section topic-section" data-topic="repeated" id="varias">
+      <div class="two-column-intro"><div><p class="eyebrow">Estación 03 · Repetir para aprender</p><h2>Incertidumbre de varias mediciones</h2></div><p>Al repetir una medición aparecen pequeñas diferencias. La media resume el conjunto y la dispersión nos dice cuánto varían los datos.</p></div>
+      <div class="mean-feature">
+        <div class="mean-copy"><span class="feature-number">A</span><h3>La media aritmética</h3><p>Se suman todas las mediciones y se divide entre el número de mediciones. Es el centro del conjunto de datos.</p><div class="large-formula"><span class="fraction"><span>x<sub>1</sub> + x<sub>2</sub> + ··· + x<sub>n</sub></span><span class="frac-line"></span><span>n</span></span><span class="equals">=</span><span>x̄</span></div><div class="worked-example"><span>Ejemplo</span><strong>(10.2 + 10.4 + 10.3) / 3 = <mark>10.3 cm</mark></strong></div></div>
+        <div class="data-visual"><div class="data-label">TRES LECTURAS · cm</div><div class="bars"><div class="bar-wrap"><div class="bar bar-a" style="height:68%"><span>10.2</span></div><small>x<sub>1</sub></small></div><div class="bar-wrap"><div class="bar bar-b" style="height:82%"><span>10.4</span></div><small>x<sub>2</sub></small></div><div class="bar-wrap"><div class="bar bar-c" style="height:75%"><span>10.3</span></div><small>x<sub>3</sub></small></div><div class="mean-line"><span>media x̄ = 10.3</span></div></div><p class="visual-caption">La media no elimina la variación: la representa con un valor central.</p></div>
+      </div>
+      <div class="formula-cards">
+        <article><span class="formula-tag">PASO 1</span><h3>Desviación de cada dato</h3><p>¿Qué tan lejos está cada lectura de la media?</p><div class="small-formula">d<sub>i</sub> = x<sub>i</sub> − x̄</div><span class="symbol-note">d<sub>i</sub>: desviación de la lectura i</span></article>
+        <article><span class="formula-tag">PASO 2</span><h3>Desviación estándar (σ)</h3><p>Resume la dispersión de las lecturas respecto a la media.</p><div class="small-formula">σ = √[ Σ(x<sub>i</sub> − x̄)² / (n − 1) ]</div><span class="symbol-note">σ: desviación estándar de la muestra</span></article>
+        <article><span class="formula-tag">PASO 3</span><h3>Incerteza de la media</h3><p>La media suele ser más estable que una lectura individual.</p><div class="small-formula">Incerteza = σ / √n</div><span class="symbol-note">σ/√n: incerteza asociada al promedio</span></article>
+      </div>
+      <div class="callout callout-amber"><span class="callout-icon">↘</span><div><strong>La idea poderosa</strong><p>Si las mediciones son independientes y el ruido es aleatorio, repetir <em>n</em> veces reduce la incertidumbre de la media aproximadamente como <span class="formula-inline">1 / √n</span>. Para reducirla a la mitad necesitas unas cuatro veces más mediciones.</p></div></div>
+    </section>
+
+    <section class="symbols-section topic-section" data-topic="repeated" id="simbolos">
+      <div class="section-shell"><div class="section-heading"><div><p class="eyebrow">Estación 04 · Leer las ecuaciones</p><h2>Diccionario de símbolos</h2></div><p class="heading-aside">No memorices fórmulas sin contexto: identifica qué representa cada letra y qué unidad debe tener.</p></div>
+        <div class="symbol-table-wrap"><table class="symbol-table"><thead><tr><th>Símbolo</th><th>Nombre</th><th>Qué representa</th><th>Unidad habitual</th></tr></thead><tbody>
+          <tr><td><span class="table-symbol">x<sub>i</sub></span></td><td>i-ésima medición</td><td>Un dato individual; el subíndice i indica su posición.</td><td>la de la magnitud</td></tr>
+          <tr><td><span class="table-symbol">x̄</span></td><td>media aritmética</td><td>Mejor estimación central de varias mediciones.</td><td>la de x<sub>i</sub></td></tr>
+          <tr><td><span class="table-symbol">n</span></td><td>número de datos</td><td>Cantidad total de mediciones realizadas.</td><td>sin unidad</td></tr>
+          <tr><td><span class="table-symbol">d<sub>i</sub></span></td><td>desviación</td><td>Diferencia entre un dato y la media: x<sub>i</sub> − x̄.</td><td>la de x<sub>i</sub></td></tr>
+          <tr><td><span class="table-symbol">σ</span></td><td>desviación estándar</td><td>Dispersión típica de los datos de una muestra.</td><td>la de x<sub>i</sub></td></tr>
+          <tr><td><span class="table-symbol">σ / √n</span></td><td>incerteza de la media</td><td>Incerteza estadística asociada al promedio de n lecturas.</td><td>la de x̄</td></tr>
+          <tr><td><span class="table-symbol">u<sub>B</sub></span></td><td>incertidumbre tipo B</td><td>Incertidumbre estimada por resolución, calibración o especificaciones.</td><td>la de x</td></tr>
+          <tr><td><span class="table-symbol">u<sub>r</sub></span></td><td>incertidumbre relativa</td><td>Razón entre la incertidumbre y el valor: u / x.</td><td>adimensional o %</td></tr>
+        </tbody></table></div>
+      </div>
+    </section>
+
+    <section class="section-shell method-section topic-section" data-topic="repeated" id="metodo">
+      <div class="two-column-intro"><div><p class="eyebrow">Estación 05 · Tomar una decisión</p><h2>¿Qué tipo de incertidumbre uso?</h2></div><p>La pregunta clave no es “¿qué fórmula recuerdo?”, sino “¿de dónde viene la duda en esta medición?”.</p></div>
+       <div class="method-grid"><article class="method-card"><div class="method-icon">A</div><h3>Tipo A · Estadística</h3><p>Se obtiene al analizar una serie de observaciones repetidas.</p><ul><li>Usa media y desviación estándar.</li><li>Describe variaciones aleatorias.</li><li>Ejemplo: tiempos medidos varias veces.</li></ul><span class="method-formula">Incerteza = σ / √n</span></article><article class="method-card featured"><div class="method-icon">B</div><h3>Tipo B · Información previa</h3><p>Se estima con datos que no provienen de repetir el experimento.</p><ul><li>Resolución del instrumento.</li><li>Certificado de calibración.</li><li>Experiencia, especificaciones o tolerancias.</li></ul><span class="method-formula">u<sub>B</sub> ≈ resolución / 2</span></article><article class="method-card"><div class="method-icon">⊕</div><h3>Combinada · Si hace falta</h3><p>Cuando hay varias fuentes independientes de incertidumbre, se combinan.</p><ul><li>Identifica cada componente.</li><li>Eleva al cuadrado y suma.</li><li>Extrae la raíz cuadrada.</li></ul><span class="method-formula">u<sub>c</sub> = √(u<sub>A</sub>² + u<sub>B</sub>²)</span></article></div>
+      <div class="flow-note"><span>1</span><strong>Medir</strong><i>→</i><span>2</span><strong>Calcular</strong><i>→</i><span>3</span><strong>Redondear</strong><i>→</i><span>4</span><strong>Informar</strong></div>
+    </section>
+
+    <section class="calculator-section topic-section" data-topic="repeated" id="calculadora">
+       <div class="section-shell calculator-layout"><div class="calculator-copy"><p class="eyebrow light">Herramienta interactiva</p><h2>Repite, calcula, comprende</h2><p>Escribe tus mediciones separadas por comas. La calculadora obtiene la media, la desviación estándar σ de la muestra y la incerteza de la media.</p><div class="calculator-tip"><span>✦</span><span>Usa al menos dos mediciones para estimar la dispersión.</span></div></div><div class="calculator-card"><label for="measurements">Tus mediciones</label><div class="input-row"><input id="measurements" type="text" value="10.2, 10.4, 10.3, 10.3" aria-describedby="calcError"><span class="input-unit">cm</span></div><button class="button button-primary full" id="calculateBtn" type="button">Calcular incerteza <span>→</span></button><p class="calc-error" id="calcError" role="alert"></p><div class="calc-results" aria-live="polite"><div><span>n</span><strong id="resultN">4</strong><small>mediciones</small></div><div><span>media x̄</span><strong id="resultMean">10.30</strong><small>cm</small></div><div><span>desviación σ</span><strong id="resultStd">0.08</strong><small>cm</small></div><div class="result-highlight"><span>incerteza σ/√n</span><strong id="resultUncertainty">± 0.04</strong><small>cm</small></div></div><p class="calc-report" id="calcReport">Resultado: <strong>x̄ = (10.30 ± 0.04) cm</strong></p></div></div>
+    </section>
+
+    <section class="section-shell solved-section topic-section" data-topic="both" id="resueltos">
+      <div class="section-heading"><div><p class="eyebrow">Estación 06 · Aprende viendo el procedimiento</p><h2>Ejercicios resueltos paso a paso</h2></div><p class="heading-aside">Aquí puedes observar el razonamiento completo antes de intentar los ejercicios finales. Fíjate en qué dato se identifica en cada paso.</p></div>
+      <div class="solved-list">
+        <article class="solved-card" data-topic="single">
+          <div class="solved-header"><div><span class="solved-number">01</span><span class="solved-type">Una sola medición · Tipo B</span><h3>Medir la longitud de un lápiz</h3></div><span class="solved-answer">L = (15.6 ± 0.5) mm</span></div>
+          <p class="solved-prompt">Una regla tiene divisiones mínimas de 1 mm. Al medir un lápiz, la lectura es 15.6 mm. Estima la incertidumbre y escribe el resultado.</p>
+          <div class="step-grid">
+            <div class="solved-step"><span>1</span><div><strong>Identifica la resolución</strong><p>La división mínima de la regla es: <code>r = 1 mm</code>.</p></div></div>
+            <div class="solved-step"><span>2</span><div><strong>Aplica la aproximación</strong><p>Para una lectura entre divisiones: <code>u<sub>B</sub> ≈ r / 2 = 1 mm / 2 = 0.5 mm</code>.</p></div></div>
+            <div class="solved-step"><span>3</span><div><strong>Combina valor e incertidumbre</strong><p>La lectura es 15.6 mm y la incertidumbre es 0.5 mm.</p></div></div>
+            <div class="solved-step final-step"><span>✓</span><div><strong>Resultado final</strong><p><mark>L = (15.6 ± 0.5) mm</mark>. El valor razonable está entre 15.1 mm y 16.1 mm.</p></div></div>
+          </div>
+        </article>
+
+        <article class="solved-card solved-card-accent" data-topic="repeated">
+          <div class="solved-header"><div><span class="solved-number">02</span><span class="solved-type">Varias mediciones · Tipo A</span><h3>Repetir la longitud de una pieza</h3></div><span class="solved-answer">x̄ = (10.30 ± 0.06) cm</span></div>
+          <p class="solved-prompt">Se mide una pieza tres veces: <strong>10.2 cm, 10.4 cm y 10.3 cm</strong>. Calcula la media, la desviación estándar y la incertidumbre de la media.</p>
+          <div class="step-grid">
+            <div class="solved-step"><span>1</span><div><strong>Calcula la media aritmética</strong><p><code>x̄ = (10.2 + 10.4 + 10.3) / 3 = 10.3 cm</code>.</p></div></div>
+            <div class="solved-step"><span>2</span><div><strong>Calcula las desviaciones</strong><p><code>−0.1 cm, +0.1 cm, 0 cm</code>. Sus cuadrados son <code>0.01, 0.01, 0</code>.</p></div></div>
+            <div class="solved-step"><span>3</span><div><strong>Calcula la desviación estándar σ</strong><p><code>σ = √[0.02 / (3 − 1)] = √0.01 = 0.10 cm</code>.</p></div></div>
+            <div class="solved-step"><span>4</span><div><strong>Calcula la incerteza de la media</strong><p><code>Incerteza = σ / √n = 0.10 / √3 = 0.0577 ≈ 0.06 cm</code>.</p></div></div>
+            <div class="solved-step final-step"><span>✓</span><div><strong>Resultado final</strong><p><mark>x̄ = (10.30 ± 0.06) cm</mark>. La repetición permitió estimar la variación aleatoria.</p></div></div>
+          </div>
+        </article>
+
+        <article class="solved-card solved-card-warm" data-topic="repeated">
+          <div class="solved-header"><div><span class="solved-number">03</span><span class="solved-type">Comparar mediciones · Relativa</span><h3>Expresar la incertidumbre en porcentaje</h3></div><span class="solved-answer">u<sub>r</sub> = 0.4 %</span></div>
+          <p class="solved-prompt">Una balanza informa una masa de <strong>250 g</strong> con una incertidumbre de <strong>±1 g</strong>. Calcula la incertidumbre relativa y porcentual.</p>
+          <div class="step-grid">
+            <div class="solved-step"><span>1</span><div><strong>Separa los datos</strong><p><code>x = 250 g</code> y <code>u = 1 g</code>. Ambas cantidades tienen la misma unidad.</p></div></div>
+            <div class="solved-step"><span>2</span><div><strong>Divide la incertidumbre entre el valor</strong><p><code>u<sub>r</sub> = u / x = 1 g / 250 g = 0.004</code>.</p></div></div>
+            <div class="solved-step"><span>3</span><div><strong>Convierte a porcentaje</strong><p><code>u<sub>r</sub>(%) = 0.004 × 100 = 0.4 %</code>.</p></div></div>
+            <div class="solved-step final-step"><span>✓</span><div><strong>Resultado e interpretación</strong><p><mark>m = (250 ± 1) g</mark> y su incertidumbre relativa es <mark>0.4 %</mark>. Es una forma útil de comparar la calidad de distintas mediciones.</p></div></div>
+          </div>
+        </article>
+      </div>
+      <div class="solved-tip"><span>✦</span><div><strong>Truco para resolver cualquier ejercicio</strong><p>1) Escribe los datos con unidades. 2) Decide si es una lectura o varias. 3) Elige la fórmula. 4) Sustituye con calma. 5) Redondea y escribe el resultado completo.</p></div></div>
+    </section>
+
+    <section class="section-shell practice-section topic-section" data-topic="both" id="practica">
+      <div class="section-heading"><div><p class="eyebrow">Estación final · Comprueba lo aprendido</p><h2>Ahora te toca a ti</h2></div><p class="heading-aside">Intenta responder antes de abrir la solución. La práctica convierte una fórmula en criterio.</p></div>
+      <div class="exercise-list">
+        <article class="exercise-card" data-topic="single"><div class="exercise-meta"><span>01 / Concepto</span><span class="difficulty easy">inicial</span></div><h3>¿Cuál es el informe más completo?</h3><p>Una balanza muestra 250 g y su incerteza estimada es 1 g. ¿Cómo debes comunicar el resultado?</p><div class="answer-options" data-answer="b"><button type="button" data-option="a">a) 250</button><button type="button" data-option="b">b) (250 ± 1) g</button><button type="button" data-option="c">c) 251 g</button></div><div class="exercise-feedback" aria-live="polite"></div></article>
+        <article class="exercise-card" data-topic="repeated"><div class="exercise-meta"><span>01 / Media</span><span class="difficulty medium">intermedio</span></div><h3>Encuentra la media aritmética</h3><p>Calcula x̄ para las mediciones: <strong>8.1 cm, 8.3 cm y 8.2 cm</strong>.</p><div class="answer-options" data-answer="b"><button type="button" data-option="a">a) 8.1 cm</button><button type="button" data-option="b">b) 8.2 cm</button><button type="button" data-option="c">c) 24.6 cm</button></div><div class="exercise-feedback" aria-live="polite"></div></article>
+        <article class="exercise-card" data-topic="repeated"><div class="exercise-meta"><span>02 / Incerteza</span><span class="difficulty advanced">reto</span></div><h3>¿Qué pasa al aumentar n?</h3><p>Si la desviación estándar σ permanece igual y duplicas el número de mediciones, ¿qué ocurre aproximadamente con la incerteza = σ / √n?</p><div class="answer-options" data-answer="c"><button type="button" data-option="a">a) Se duplica</button><button type="button" data-option="b">b) No cambia</button><button type="button" data-option="c">c) Disminuye por un factor √2</button></div><div class="exercise-feedback" aria-live="polite"></div></article>
+      </div>
+      <div class="score-banner" id="scoreBanner"><span class="score-icon">★</span><div><strong id="scoreTitle">Tu recorrido empieza aquí</strong><p id="scoreText">Responde el ejercicio de este tema para ver tu resultado.</p></div><span class="score-count" id="scoreCount">0 / 1</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="section-shell footer-inner"><div><a class="brand footer-brand" href="#inicio"><span class="brand-mark">σ</span><span><strong>Incerteza</strong><small>Medir también es estimar</small></span></a><p>Una guía para entender y comunicar mediciones.</p></div><div class="footer-links"><button type="button" data-topic-select="single">Una medición</button><button type="button" data-topic-select="repeated">Mediciones repetidas</button><a href="#mapa">Elegir tema ↑</a></div><span class="footer-mark">x̄ ± σ</span></div></footer>
+  <script src="app.js"></script>
+</body>
+</html>
